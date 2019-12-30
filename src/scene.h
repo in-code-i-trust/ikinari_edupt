@@ -31,10 +31,6 @@ const Sphere spheres[] = {
 
 	const double n = sizeof(spheres) / sizeof(Sphere);
 
-	if(spheres[2].position.x<45){
-		ExitProcess(1);
-	}
-
 	// 初期化
 	intersection->hitpoint.distance = kINF;
 	intersection->object_id  = -1;
