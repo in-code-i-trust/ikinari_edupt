@@ -1,15 +1,35 @@
-edupt
-=====
+ikinari_edupt
+=============
 
-eduptはC++で書かれたパストレーシングによるシンプルでコンパクトな物理ベースレンダラです。 ソースコードはGithubで公開されており、日本語によるコメントが付けられています。  
-さらに、パストレーシング・物理ベースレンダリング・eduptのソースコード、の解説スライドも公開しています。 
+UEFIアプリケーションとしてeduptをコンパイルできるようにしたリポジトリです。  
+一部不完全な実装があります。  
+  
+パストレーサーとしての動作には手を加えていないため、そこに興味があればオリジナルを参照してください。  
+https://github.com/githole/edupt  
+  
+### 必要なもの
+- clang+LLD  
+  - http://releases.llvm.org/download.html  
+  - 9.0.0で確認
+  - パスを通すこと
+- QEMU
+  - https://www.qemu.org/
+  - 20190815確認
+- OVMF 
+  - https://sourceforge.net/projects/edk2/files/OVMF/
+  - OVMF-X64-r15214.zipで確認
 
-http://kagamin.net/hole/edupt/index.htm
+## 動かし方
+### UEFI版
+1. `emake.bat run`を実行するとQEMUで起動する  
+  
+実機で動かすにはFAT32フォーマットのUSBフラッシュメモリを用意し、`/EFI/BOOT/BOOTX64.EFI`をコピーする。  
+一部の実機ではセキュアブートが有効になっているものがある。それでは起動できないため、セキュアブートは一時的に切る。  
+※WindowsでBitLockerを有効にしている環境でセキュアブート設定を切り替えるとBitLocker回復キーが必要になるので要注意  
 
-=====
-以下ライセンス
-
-Copyright (c) 2014 hole
-This software is released under the MIT License (http://kagamin.net/hole/license.txt).
-A part of this software is based on smallpt (http://www.kevinbeason.com/smallpt/) and
-released under the MIT License (http://kagamin.net/hole/smallpt-license.txt).
+### Windows版の動かし方
+1. `kernel32.lib`を`wmake.bat`と同じディレクトリに配置  
+2. `wmake.bat run`を実行  
+※オリジナル版を素直にVisual Studioでビルドするのが楽です  
+  
+EOF
