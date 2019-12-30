@@ -7,6 +7,8 @@
 
 namespace edupt {
 
+// シーンとの交差判定関数
+inline bool intersect_scene(const Ray &ray, Intersection *intersection) {
 // レンダリングするシーンデータ
 const Sphere spheres[] = {
 	Sphere(1e5, Vec( 1e5+1, 40.8, 81.6), Color(),      Color(0.75, 0.25, 0.25), REFLECTION_TYPE_DIFFUSE), // 左
@@ -21,9 +23,11 @@ const Sphere spheres[] = {
 	Sphere(15.0,Vec(50.0, 90.0, 81.6),   Color(36,36,36), Color(),              REFLECTION_TYPE_DIFFUSE), //照明
 };
 
-// シーンとの交差判定関数
-inline bool intersect_scene(const Ray &ray, Intersection *intersection) {
 	const double n = sizeof(spheres) / sizeof(Sphere);
+
+	if(spheres[2].position.x<45){
+		ExitProcess(1);
+	}
 
 	// 初期化
 	intersection->hitpoint.distance = kINF;

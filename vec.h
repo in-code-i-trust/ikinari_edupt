@@ -1,7 +1,7 @@
 #ifndef	_VEC_H_
 #define	_VEC_H_
 
-#include <cmath>
+// #include <cmath>
 
 namespace edupt {
 

@@ -1,11 +1,11 @@
 #ifndef _RANDOM_H_
 #define _RANDOM_H_
 
-#include <climits>
+// #include <climits>
+static const unsigned int UINT_MAX = (unsigned int)-1;
 
 namespace edupt {
 
-// Xor-Shiftによる乱数ジェネレータ
 class XorShift {
 	unsigned int seed_[4];
 public:
